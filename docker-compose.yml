@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  sample-wrapper:
+    container_name: sample_wrapper
+
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    tty: true
+    volumes:
+      - .:/code/
+      - ${PIP_CACHE_DIR:-cache-sample-wrapper}:/root/.cache
+
+volumes:
+  cache-sample-wrapper:

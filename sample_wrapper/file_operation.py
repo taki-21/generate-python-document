@@ -1,11 +1,12 @@
 import pathlib
+from typing import List
 
 # from typing import List
 
 
 def read_input_file_paths(
         input_root_path: pathlib.PosixPath,
-        extension: str):
+        extension: str) -> List:
     """最下層に存在する指定した拡張子のファイルを全て取得する
     Args:
         input_root_path (pathlib.PosixPath): ディレクトリのパス

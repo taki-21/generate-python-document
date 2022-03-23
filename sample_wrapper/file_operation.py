@@ -39,3 +39,16 @@ def generate_output_name_with_work_id(
     else:
         output_name = f"[#{work_id}]_{file_stem}"
     return output_name
+
+
+def extract_original_file_name(file_name: str):
+    """ワークIDを除いた元のファイル名を抽出する（ワークIDがある場合）
+
+    Args:
+        file_name (str): ファイル名
+
+    Returns:
+        original_file_name(str): 元のファイル名
+    """
+    original_file_name = re.sub(r'^[#[0-9]+]_', "", file_name)
+    return original_file_name

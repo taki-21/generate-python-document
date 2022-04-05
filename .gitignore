@@ -337,12 +337,3 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
-
-# extra
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-docs
-=======
->>>>>>> add: gitignore
->>>>>>> feature_plan_class

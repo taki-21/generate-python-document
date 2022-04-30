@@ -1,21 +1,18 @@
-FROM python:3.8
 # 基本的には標準のpythonから作成する
+FROM python:3.8
 
-ENV APP_PATH=/code \
-    PYTHONPATH=.
-# 開発物のソースコードはcodeデイレクトリ下に配置する
+# APP_PATHである'/code'ディレクトリは勝手に作成される
+WORKDIR /code
 
-WORKDIR $APP_PATH
-
+# コンテナのセットアップ
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y libgl1-mesa-dev poppler-utils poppler-data && \
-    pip install poetry
-# コンテナのセットアップ
+    pip install poetry && \
+    poetry config virtualenvs.create false
 
 COPY . .
 
-RUN poetry install
 # 必要なパッケージ等をインストールする
+RUN poetry install
 
 EXPOSE 8080

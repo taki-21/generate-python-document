@@ -5,7 +5,7 @@ services:
     container_name: sample_wrapper
 
     build:
-      context: .
+      context: ./
       dockerfile: ./Dockerfile
     ports:
       - "8080:8080"

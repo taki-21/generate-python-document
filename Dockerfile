@@ -7,8 +7,7 @@ WORKDIR /code
 # コンテナのセットアップ
 RUN apt-get update && \
     apt-get upgrade -y && \
-    pip install poetry && \
-    poetry config virtualenvs.create false
+    pip install poetry
 
 COPY . .
 

@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   python-wrapper:
-    container_name: python_docment
+    container_name: python_wrapper
 
     build:
       context: ./
@@ -12,7 +12,7 @@ services:
     tty: true
     volumes:
       - .:/code/
-      - ${PIP_CACHE_DIR:-cache-sample-wrapper}:/root/.cache
+      - ${PIP_CACHE_DIR:-cache-python-wrapper}:/root/.cache
 
 volumes:
-  cache-sample-wrapper:
+  cache-python-wrapper:

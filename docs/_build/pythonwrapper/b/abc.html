@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>abc module &#8212; python-wrapper  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="b" href="modules.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-abc">
+<span id="abc-module"></span><h1>abc module<a class="headerlink" href="#module-abc" title="Permalink to this headline"></a></h1>
+<p>Abstract Base Classes (ABCs) according to PEP 3119.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="abc.ABC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">abc.</span></span><span class="sig-name descname"><span class="pre">ABC</span></span><a class="reference internal" href="../../_modules/abc.html#ABC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abc.ABC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Helper class that provides a standard way to create an ABC using
+inheritance.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="abc.ABCMeta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">abc.</span></span><span class="sig-name descname"><span class="pre">ABCMeta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/abc.html#ABCMeta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abc.ABCMeta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></p>
+<p>Metaclass for defining Abstract Base Classes (ABCs).</p>
+<p>Use this metaclass to create an ABC.  An ABC can be subclassed
+directly, and then acts as a mix-in class.  You can also register
+unrelated concrete classes (even built-in classes) and unrelated
+ABCs as ‘virtual subclasses’ – these and their descendants will
+be considered subclasses of the registering ABC by the built-in
+issubclass() function, but the registering ABC won’t show up in
+their MRO (Method Resolution Order) nor will method
+implementations defined by the registering ABC be callable (not
+even via super()).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="abc.ABCMeta.register">
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subclass</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/abc.html#ABCMeta.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abc.ABCMeta.register" title="Permalink to this definition"></a></dt>
+<dd><p>Register a virtual subclass of an ABC.</p>
+<p>Returns the subclass, to allow usage as a class decorator.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="abc.abstractclassmethod">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">abc.</span></span><span class="sig-name descname"><span class="pre">abstractclassmethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/abc.html#abstractclassmethod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abc.abstractclassmethod" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">classmethod</span></code></p>
+<p>A decorator indicating abstract classmethods.</p>
+<p>Deprecated, use ‘classmethod’ with ‘abstractmethod’ instead.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="abc.abstractmethod">
+<span class="sig-prename descclassname"><span class="pre">abc.</span></span><span class="sig-name descname"><span class="pre">abstractmethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">funcobj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/abc.html#abstractmethod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abc.abstractmethod" title="Permalink to this definition"></a></dt>
+<dd><p>A decorator indicating abstract methods.</p>
+<p>Requires that the metaclass is ABCMeta or derived from it.  A
+class that has a metaclass derived from ABCMeta cannot be
+instantiated unless all of its abstract methods are overridden.
+The abstract methods can be called using any of the normal
+‘super’ call mechanisms.  abstractmethod() may be used to declare
+abstract methods for properties and descriptors.</p>
+<p>Usage:</p>
+<blockquote>
+<div><dl>
+<dt>class C(metaclass=ABCMeta):</dt><dd><p>&#64;abstractmethod
+def my_abstract_method(self, …):</p>
+<blockquote>
+<div><p>…</p>
+</div></blockquote>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="abc.abstractproperty">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">abc.</span></span><span class="sig-name descname"><span class="pre">abstractproperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/abc.html#abstractproperty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abc.abstractproperty" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">property</span></code></p>
+<p>A decorator indicating abstract properties.</p>
+<p>Deprecated, use ‘property’ with ‘abstractmethod’ instead.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="abc.abstractstaticmethod">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">abc.</span></span><span class="sig-name descname"><span class="pre">abstractstaticmethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/abc.html#abstractstaticmethod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abc.abstractstaticmethod" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">staticmethod</span></code></p>
+<p>A decorator indicating abstract staticmethods.</p>
+<p>Deprecated, use ‘staticmethod’ with ‘abstractmethod’ instead.</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">python-wrapper</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../a/modules.html">a</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">b</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">abc module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">b</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">b</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, taki-21.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/pythonwrapper/b/abc.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

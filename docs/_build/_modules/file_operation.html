@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>file_operation &#8212; python-wrapper  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for file_operation</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="c1"># from typing import List</span>
+
+<span class="c1"># from typing import List</span>
+
+
+<div class="viewcode-block" id="read_input_file_paths"><a class="viewcode-back" href="../pythonwrapper/a/file_operation.html#file_operation.read_input_file_paths">[docs]</a><span class="k">def</span> <span class="nf">read_input_file_paths</span><span class="p">(</span>
+        <span class="n">input_root_path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PosixPath</span><span class="p">,</span>
+        <span class="n">extension</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;最下層に存在する指定した拡張子のファイルを全て取得する</span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_root_path (pathlib.PosixPath): ディレクトリのパス</span>
+<span class="sd">        extension (str): 拡張子</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        all_path_list (List[pathlib.PosixPath]): 取得したファイルパスのリスト</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_path_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">input_root_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;**/*.</span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">all_path_list</span></div>
+
+
+<div class="viewcode-block" id="generate_output_name_with_work_id"><a class="viewcode-back" href="../pythonwrapper/a/file_operation.html#file_operation.generate_output_name_with_work_id">[docs]</a><span class="k">def</span> <span class="nf">generate_output_name_with_work_id</span><span class="p">(</span>
+        <span class="n">work_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">file_stem</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">extension</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;IDを付与したファイル名(or ディレクトリ名) を生成する</span>
+<span class="sd">       ディレクトリ名は生成するときはextensionは指定しない</span>
+<span class="sd">    Args:</span>
+<span class="sd">        work_id (int): ワークID</span>
+<span class="sd">        file_stem (str): 拡張子なしのファイル名</span>
+<span class="sd">        extension (str, optional): ファイルに付与したい拡張子. Defaults to &#39;&#39;. (pdf, json, xlsx ...)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        output_name (str): IDを付与したファイル名(or ディレクトリ名)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">work_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">work_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">extension</span><span class="p">:</span>
+        <span class="n">output_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;[#</span><span class="si">{</span><span class="n">work_id</span><span class="si">}</span><span class="s2">]_</span><span class="si">{</span><span class="n">file_stem</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">output_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;[#</span><span class="si">{</span><span class="n">work_id</span><span class="si">}</span><span class="s2">]_</span><span class="si">{</span><span class="n">file_stem</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">output_name</span></div>
+
+
+<div class="viewcode-block" id="extract_original_file_name"><a class="viewcode-back" href="../pythonwrapper/a/file_operation.html#file_operation.extract_original_file_name">[docs]</a><span class="k">def</span> <span class="nf">extract_original_file_name</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;ワークIDを除いた元のファイル名を抽出する（ワークIDがある場合）</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        file_name (str): ファイル名</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        original_file_name(str): 元のファイル名</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">original_file_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^[#[0-9]+]_&#39;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">original_file_name</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">python-wrapper</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pythonwrapper/a/modules.html">a</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pythonwrapper/b/modules.html">b</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, taki-21.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

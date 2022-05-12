@@ -10,7 +10,8 @@ Welcome to python-wrapper's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   ./pythonwrapper/a/modules
+   ./pythonwrapper/b/modules
 
 Indices and tables
 ==================

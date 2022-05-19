@@ -1,13 +1,28 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: ---
-Metadata: 
+Metadata:
 
-Parameters: 
+Parameters:
 
-Mappings: 
+Mappings:
 
-Conditions: 
+Conditions:
 
-Resources: 
+Resources:
+  cloudfrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        CacheBehaviors:
+          - 
+            behavior
+        DefaultCacheBehavior: 
+        IPV6Enabled: true | false
+        Origins:
+          - 
+            origin
+      Tags:
+        - Key: key
+          Value: value
 
 Outputs:

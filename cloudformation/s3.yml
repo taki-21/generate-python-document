@@ -1,13 +1,26 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: s3bucket
-Metadata: 
+Description: Create S3 Bucket For HTML File
+Metadata:
 
-Parameters: 
+Parameters:
 
-Mappings: 
+Mappings:
 
-Conditions: 
+Conditions:
 
-Resources: 
+Resources:
+  s3Bucket:
+    Type: AWS::S3::Bucket
+    Properties: 
+      AccessControl: Private | PublicRead | PublicReadWrite | AuthenticatedRead | LogDeliveryWrite | BucketOwnerRead | BucketOwnerFullControl
+      BucketName: 
+      CorsConfiguration: 
+      LifecycleConfiguration: 
+      NotificationConfiguration: 
+      VersioningConfiguration: 
+      WebsiteConfiguration: 
+      Tags:
+        - Key: key
+          Value: value
 
 Outputs:

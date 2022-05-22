@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: ---
+Description: Create CloudFront
 Metadata:
 
 Parameters:
@@ -14,12 +14,12 @@ Resources:
     Properties:
       DistributionConfig:
         CacheBehaviors:
-          - 
+          -
             behavior
-        DefaultCacheBehavior: 
+        DefaultCacheBehavior:
         IPV6Enabled: true | false
         Origins:
-          - 
+          -
             origin
       Tags:
         - Key: key

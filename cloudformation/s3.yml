@@ -14,12 +14,14 @@ Resources:
     Properties:
       AccessControl: Private
       # AccessControl: Private | PublicRead | PublicReadWrite | AuthenticatedRead | LogDeliveryWrite | BucketOwnerRead | BucketOwnerFullControl
-      BucketName:
+      BucketName: python-document
       CorsConfiguration:
       LifecycleConfiguration:
       NotificationConfiguration:
       VersioningConfiguration:
       WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: 404.html
       Tags:
         - Key: key
           Value: value

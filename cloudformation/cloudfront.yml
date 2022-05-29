@@ -17,6 +17,8 @@ Resources:
         CacheBehaviors:
           -
         DefaultCacheBehavior:
+          TargetOriginId:
+          ViewerProtocolPolicy: redirect-to-https
         IPV6Enabled: true | false
         Origins:
           - CustomOriginConfig:

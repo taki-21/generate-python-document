@@ -19,6 +19,9 @@ Resources:
         DefaultCacheBehavior:
           TargetOriginId:
           ViewerProtocolPolicy: redirect-to-https
+          DefaultTTL: 3600
+          MaxTTL: 84600
+          MinTTL: 60
         IPV6Enabled: true | false
         Origins:
           - CustomOriginConfig:

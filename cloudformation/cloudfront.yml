@@ -13,14 +13,14 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
+        PriceClass:
         CacheBehaviors:
           -
-            behavior
         DefaultCacheBehavior:
         IPV6Enabled: true | false
         Origins:
-          -
-            origin
+          - CustomOriginConfig:
+              OriginProtocolPolicy: http-only
       Tags:
         - Key: key
           Value: value

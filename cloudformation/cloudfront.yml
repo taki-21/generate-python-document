@@ -22,6 +22,7 @@ Resources:
           DefaultTTL: 3600
           MaxTTL: 84600
           MinTTL: 60
+          Compress: true
         IPV6Enabled: true | false
         Origins:
           - CustomOriginConfig:

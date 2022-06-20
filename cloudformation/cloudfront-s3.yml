@@ -50,6 +50,7 @@ Resources:
           Value: python-wrapper
         - Key: CmBillingGroup
           Value: python-wrapper
+  
   # CloudFront OAIの設定
   CloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity

@@ -6,7 +6,7 @@ Resources:
   MyBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: "sample-bucket-demo-1"
+      BucketName: "python-wrapper-bucket"
       Tags:
         - Key: Name
           Value: python-wrapper

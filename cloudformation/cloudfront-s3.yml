@@ -1,34 +1,63 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: Create CloudFront
-Metadata:
-
-Parameters:
-
-Mappings:
-
-Conditions:
+Description: Static contents distribution using S3 and CloudFront.
 
 Resources:
-  cloudfrontDistribution:
+  # S3バケット
+  MyBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: "sample-bucket-demo-1"
+      Tags:
+        - Key: Name
+          Value: sample-bucket-demo-1
+        - Key: CmBillingGroup
+          Value: sample-bucket
+
+  # S3のバケットポリシー
+  MyBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref MyBucket
+      PolicyDocument:
+        Statement:
+          - Action: s3:GetObject
+            Effect: Allow
+            Resource: !Sub arn:aws:s3:::${MyBucket}/*
+            Principal:
+              AWS: !Sub arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${CloudFrontOriginAccessIdentity}
+
+  # CloudFront Distribution for contents delivery
+  CloudfrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
-        PriceClass:
-        CacheBehaviors:
-          -
-        DefaultCacheBehavior:
-          TargetOriginId:
-          ViewerProtocolPolicy: redirect-to-https
-          DefaultTTL: 3600
-          MaxTTL: 84600
-          MinTTL: 60
-          Compress: true
-        IPV6Enabled: true | false
         Origins:
-          - CustomOriginConfig:
-              OriginProtocolPolicy: http-only
+          - Id: S3Origin
+            # DomainName: !GetAtt MyBucket.DomainName
+            DomainName: !GetAtt MyBucket.RegionalDomainName
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}
+        Enabled: true
+        DefaultRootObject: index.html
+        Comment: !Sub ${AWS::StackName} distribution
+        DefaultCacheBehavior:
+          TargetOriginId: S3Origin
+          ForwardedValues:
+            QueryString: false
+          ViewerProtocolPolicy: redirect-to-https
       Tags:
-        - Key: key
-          Value: value
+        - Key: Name
+          Value: sample-cloudfront-distribution
+        - Key: CmBillingGroup
+          Value: sample-bucket
+  # CloudFront OAIの設定
+  CloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Ref AWS::StackName
 
 Outputs:
+  URL:
+    Value:
+      !Join ["", ["https://", !GetAtt [CloudfrontDistribution, DomainName]]]

@@ -9,9 +9,9 @@ Resources:
       BucketName: "sample-bucket-demo-1"
       Tags:
         - Key: Name
-          Value: sample-bucket-demo-1
+          Value: python-wrapper
         - Key: CmBillingGroup
-          Value: sample-bucket
+          Value: python-wrapper
 
   # S3のバケットポリシー
   MyBucketPolicy:
@@ -47,9 +47,9 @@ Resources:
           ViewerProtocolPolicy: redirect-to-https
       Tags:
         - Key: Name
-          Value: sample-cloudfront-distribution
+          Value: python-wrapper
         - Key: CmBillingGroup
-          Value: sample-bucket
+          Value: python-wrapper
   # CloudFront OAIの設定
   CloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity

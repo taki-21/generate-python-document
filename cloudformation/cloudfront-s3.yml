@@ -50,15 +50,10 @@ Resources:
           Value: python-wrapper
         - Key: CmBillingGroup
           Value: python-wrapper
-  
+
   # CloudFront OAIの設定
   CloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
       CloudFrontOriginAccessIdentityConfig:
         Comment: !Ref AWS::StackName
-
-Outputs:
-  URL:
-    Value:
-      !Join ["", ["https://", !GetAtt [CloudfrontDistribution, DomainName]]]

@@ -10,8 +10,6 @@ Resources:
       Tags:
         - Key: Name
           Value: python-wrapper
-        - Key: CmBillingGroup
-          Value: python-wrapper
 
   # S3のバケットポリシー
   MyBucketPolicy:
@@ -47,8 +45,6 @@ Resources:
           ViewerProtocolPolicy: redirect-to-https
       Tags:
         - Key: Name
-          Value: python-wrapper
-        - Key: CmBillingGroup
           Value: python-wrapper
 
   # CloudFront OAIの設定

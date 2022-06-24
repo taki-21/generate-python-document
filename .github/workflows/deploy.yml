@@ -1,2 +1,7 @@
-on
+name: python-wrapper
+
+on:
+  push:
+
 jobs:
+  deploy

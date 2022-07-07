@@ -3,19 +3,29 @@ name: python-wrapper
 on:
   push:
 
+env:
+  AWS_DEFAULT_REGION: ap-northeast-1
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
+  AWS_ROLE_ARN: arn:aws:iam::${{ secrets.ACCOUNT_ID }}:role/SwitchRoleForTest01
+
+  BUCKET_NAME: s-cloudfront-oai-bucket
+
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{}}
-          aws-secret-access-key: ${{}}
-          aws-region: ${{}}
-          role-to-assume: ${{}}
-          role-duration-seconds: ${{}}
-          role-skip-session-tagging: true
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Upload HTML to S3
+        run: aws s3 cp ./docs/_build/index.html s3://${{ env.BUCKET_NAME }}

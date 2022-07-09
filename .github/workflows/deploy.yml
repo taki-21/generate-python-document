@@ -1,7 +1,6 @@
 name: python-wrapper
 
-on:
-  push:
+on: [push, pull_request]
 
 env:
   AWS_REGION: ap-northeast-1

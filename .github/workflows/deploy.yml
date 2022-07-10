@@ -1,6 +1,6 @@
 name: python-wrapper
 
-on: [push, pull_request]
+on: [push]
 
 env:
   AWS_REGION: ap-northeast-1
@@ -25,6 +25,15 @@ jobs:
           aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
+
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.PIP_CACHE_DIR }}
+          key: ${{ runner.os }}-python-cache-${{ hashFiles('./pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-python-cache-
+
 
       - name: Build the docker-compose
         run: docker-compose up -d python-wrapper

@@ -2,9 +2,7 @@ import pathlib
 import re
 
 
-def read_input_file_paths(
-        input_root_path: pathlib.PosixPath,
-        extension: str):
+def read_input_file_paths(input_root_path, extension):
     """最下層に存在する指定した拡張子のファイルを全て取得する
     Args:
         input_root_path (pathlib.PosixPath): ディレクトリのパス
@@ -17,10 +15,7 @@ def read_input_file_paths(
     return all_path_list
 
 
-def generate_output_name_with_work_id(
-        work_id: int,
-        file_stem: str,
-        extension: str = ''):
+def generate_output_name_with_work_id(work_id, file_stem, extension):
     """IDを付与したファイル名(or ディレクトリ名) を生成する. ディレクトリ名は生成するときはextensionは指定しない
     Args:
         work_id (int): ワークID
@@ -38,7 +33,7 @@ def generate_output_name_with_work_id(
     return output_name
 
 
-def extract_original_file_name(file_name: str):
+def extract_original_file_name(file_name):
     """ワークIDを除いた元のファイル名を抽出する（ワークIDがある場合）
 
     Args:

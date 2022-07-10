@@ -11,7 +11,7 @@ def read_input_file_paths(
         extension (str): 拡張子
 
     Returns:
-        all_path_list (List[pathlib.PosixPath]): 取得したファイルパスのリスト
+        List[pathlib.PosixPath]: 取得したファイルパスのリスト
     """
     all_path_list = list(input_root_path.glob(f'**/*.{extension}'))
     return all_path_list
@@ -28,7 +28,7 @@ def generate_output_name_with_work_id(
         extension (str, optional): ファイルに付与したい拡張子. Defaults to ''. (pdf, json, xlsx ...)
 
     Returns:
-        output_name (str): IDを付与したファイル名(or ディレクトリ名)
+        str: IDを付与したファイル名(or ディレクトリ名)
     """
     work_id = str(work_id)
     if extension:

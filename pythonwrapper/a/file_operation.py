@@ -33,7 +33,7 @@ def generate_output_name_with_work_id(work_id, file_stem, extension):
 
 
 def extract_original_file_name(file_name):
-    """ワークIDを除いた元のファイル名を抽出する（ワークIDがある場合）
+    """（ワークIDがある場合）ワークIDを除いた元のファイル名を抽出する
 
     Args:
         file_name (str): ファイル名

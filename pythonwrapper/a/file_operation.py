@@ -21,8 +21,7 @@ def generate_output_name_with_work_id(
         work_id: int,
         file_stem: str,
         extension: str = ''):
-    """IDを付与したファイル名(or ディレクトリ名) を生成する
-       ディレクトリ名は生成するときはextensionは指定しない
+    """IDを付与したファイル名(or ディレクトリ名) を生成する. ディレクトリ名は生成するときはextensionは指定しない
     Args:
         work_id (int): ワークID
         file_stem (str): 拡張子なしのファイル名

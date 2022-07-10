@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 def calculate_two_number(a, b):
     """二つの数字の和を計算する
 

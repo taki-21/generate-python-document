@@ -1,8 +1,6 @@
+#!/usr/bin/python
 import pathlib
 import re
-# from typing import List
-
-# from typing import List
 
 
 def read_input_file_paths(

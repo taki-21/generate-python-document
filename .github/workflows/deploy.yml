@@ -10,7 +10,7 @@ env:
   ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
   AWS_ROLE_ARN: arn:aws:iam::${{ secrets.ACCOUNT_ID }}:role/SwitchRoleForTest01
 
-  BUCKET_NAME: s-cloudfront-oai-bucket
+  BUCKET_NAME: python-wrapper-bucket
 
 jobs:
   deploy:

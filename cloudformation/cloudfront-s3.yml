@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: Static contents distribution using S3 and CloudFront.
 
 Resources:
-  # S3バケット
+  # S3 バケット
   MyBucket:
     Type: AWS::S3::Bucket
     Properties:
@@ -11,7 +11,7 @@ Resources:
         - Key: Name
           Value: python-wrapper
 
-  # S3のバケットポリシー
+  # S3 バケットポリシー
   MyBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
@@ -24,7 +24,7 @@ Resources:
             Principal:
               AWS: !Sub arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${CloudFrontOriginAccessIdentity}
 
-  # CloudFront Distribution for contents delivery
+  # CloudFront ディストリビューション
   CloudfrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
@@ -47,7 +47,7 @@ Resources:
         - Key: Name
           Value: python-wrapper
 
-  # CloudFront OAIの設定
+  # CloudFront OAI
   CloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
